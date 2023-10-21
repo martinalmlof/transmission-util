@@ -3,9 +3,7 @@ from datetime import datetime,timezone,timedelta
 from transmission_rpc import Client
 
 ssd_path = "/Users/martina/media/"
-ssd_path = "/Volumes/MyBookAPFS/Media/"
 hdd_path = "/Volumes/Seagate2/"
-hdd_path = "/Volumes/MyBookAPFS/Media2/"
 
 def main():
     c = Client(host="192.168.1.12", port=9091)
