@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
     <key>Label</key>
-        <string>local.backup.photos_library</string>
+        <string>local.move_old_torrents</string>
     <key>ProgramArguments</key>
         <array>
             <string>/Users/martina/dev/martinalmlof/transmission-util/run.sh</string>
