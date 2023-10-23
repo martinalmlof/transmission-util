@@ -3,6 +3,7 @@ from datetime import datetime,timezone,timedelta
 from transmission_rpc import Client
 import argparse
 import sys
+import re
 
 
 def main():
@@ -18,7 +19,24 @@ def main():
     print(f'season: {args.season}')
     print(f'episode: {args.episode}')
 
-    sys.exit(1)
+    title_without_spaces = args.title.replace(" ", ".")
+    episode_season = f"S{args.season:02}E{args.episode:02}"
+    pattern_str = f"^{title_without_spaces}.+{episode_season}.+"
+    
+    print(f"Using this regexp to check torrents names: '{pattern_str}'")
+    pattern = re.compile(pattern_str, re.IGNORECASE)
+
+    c = Client(host="192.168.1.12", port=9091)
+    torrents = c.get_torrents(None, ["name"])
+    matched_torrents = [t for t in torrents if re.match(pattern, t.name)]
+
+    for torrent in matched_torrents:
+        print(f"Matched torrent: {torrent}")
+    
+    if matched_torrents:
+        sys.exit(1)
+    
+    sys.exit(2)
 
 
 
