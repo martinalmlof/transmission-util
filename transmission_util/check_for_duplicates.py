@@ -36,7 +36,7 @@ def main():
     if matched_torrents:
         sys.exit(1)
     
-    sys.exit(2)
+    sys.exit(0)
 
 
 
